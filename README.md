@@ -67,10 +67,10 @@ Inside `api/actions/actions-router.js` build endpoints for performing CRUD opera
 
 - [x] `[GET] /api/actions`
   - Returns an array of actions (or an empty array) as the body of the response.
-- [ ] `[GET] /api/actions/:id`
+- [x] `[GET] /api/actions/:id`
   - Returns an action with the given `id` as the body of the response.
   - If there is no action with the given `id` it responds with a status code 404.
-- [ ] `[POST] /api/actions`
+- [x] `[POST] /api/actions`
   - Returns the newly created action as the body of the response.
   - If the request body is missing any of the required fields it responds with a status code 400.
   - When adding an action make sure the `project_id` provided belongs to an existing `project`.
@@ -147,7 +147,32 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
-1. Understand and explain the use of Middleware.
-1. The basic principles of the REST architectural style.
-1. Understand and explain the use of Express Routers.
-1. Describe tooling used to manually test the correctness of an API.
+
+Node:
+  - Asynchronous and Event Driven (Node.js based server never waits for an API to return data)
+  - Very Fast
+  - Single Threaded but Highly Scalable (Node.js uses a single threaded model with event looping)
+  - No Buffering(output the data in chunks)
+
+Express:
+  - It can be used to design single-page, multi-page and hybrid web applications.
+  - It allows to setup middlewares to respond to HTTP Requests.
+  - It defines a routing table which is used to perform different actions based on HTTP method and URL.
+  - It allows to dynamically render HTML Pages based on passing arguments to templates.
+
+2. Understand and explain the use of Middleware.
+
+  - middleware is software that provides services beyond those provided by the operating system to enable the various components of a distributed system to communicate and manage data
+
+3. The basic principles of the REST architectural style.
+
+  - REST is a layered system. Individual components cannot see beyond the immediate layer with which they are interacting.
+
+4. Understand and explain the use of Express Routers.
+
+  - This function is used  to create a new router object in the program to handle requests
+
+5. Describe tooling used to manually test the correctness of an API.
+
+ - postman is an HTTP client that tests HTTP requests, utilizing a graphical user interface, through which we obtain different types of responses that need to be subsequently validated
+ - hpptpie is a command-line HTTP client.
