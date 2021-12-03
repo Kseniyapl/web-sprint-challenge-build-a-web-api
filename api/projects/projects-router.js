@@ -56,6 +56,19 @@ router.delete('/:id', validateId, (req, res, next) => {
       })
   });
 
+  router.get('/:id/actions', validateId, (req, res, next) =>{
+      Project.getProjectActions(req.params.id)
+      .then(actions => {
+        if (actions.length > 0) {
+            res.status(200).json(actions)
+        } else {
+            res.status(404).json(actions)
+        }
+    })
+    .catch(error=>{
+        next(error)
+      })
+  })
 
 router.use(errorHandling);
 
