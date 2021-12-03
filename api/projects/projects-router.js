@@ -2,7 +2,8 @@
 const express = require('express');
 const Project = require('./projects-model');
 const {
-    errorHandling
+    errorHandling,
+    validateId
  } = require('./projects-middleware');
 
 const router = express.Router();
@@ -17,6 +18,15 @@ router.get('/', (req, res, next)=>{
         next(error)
     })
 })
+
+router.get('/:id', validateId, (req, res, next) =>{
+    try{
+        res.json(req.project)
+    }catch(error){
+        next(error)
+    }
+})
+
 
 router.use(errorHandling);
 
