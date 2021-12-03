@@ -1,6 +1,10 @@
-const Action = require('../actions/actions-model')
-const express = require('express');
+const express = require('express'); 
+const Action = require('./actions-model');
 
+const {
+    validateId
+    
+ } = require('./actions-middleware');
 
 const router = express.Router();
 
@@ -13,5 +17,15 @@ router.get('/', (req, res, next)=>{
         next(error)
     })
 })
+router.get('/:id', validateId, (req, res, next) =>{
+    try{
+        res.json(req.action )
+    }catch(error){
+        next(error)
+    }
+})
+
+
+
 
 module.exports = router;
