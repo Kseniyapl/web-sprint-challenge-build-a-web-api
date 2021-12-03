@@ -24,7 +24,24 @@ function errorHandling(err, req, res, next) { // eslint-disable-line
         next(error)
     }
 }
+function validateProject(req, res, next){
+    const { name, description, completed } =req.body
+    if (!name || !name.trim()) {
+        next({ status: 422, message: 'I need a name!' });
+    }
+    else if(!description||!description.trim()){
+        next({ status: 422, message: 'I need a description!' });
+    }else if(!completed||!completed.trim()){
+        next({ status: 422, message: 'I need a completed!' });
+
+    } else {
+        req.name = name;
+        req.description = description;
+        req.completed = completed;
+        next();
+      }
+    }
 
   module.exports = {
-    errorHandling, validateId
+    errorHandling, validateId, validateProject
   }
