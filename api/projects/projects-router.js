@@ -36,6 +36,26 @@ router.post('/', validateProject,  async(req, res, next) =>{
         next(error)
     })
 })
+router.put('/:id', validateId, validateProject, (req, res, next) => {
+    Project.update(req.params.id, req.body)
+    .then(project=>{
+        res.status(200).json(project)    
+    })
+    .catch(error=>{
+        next(error)
+    })
+})
+
+router.delete('/:id', validateId, (req, res, next) => {
+    Project.remove(req.params.id)
+    .then(() => {
+        res.status(200).json(req.params.id);
+      })
+      .catch(error=>{
+        next(error)
+      })
+  });
+
 
 router.use(errorHandling);
 
