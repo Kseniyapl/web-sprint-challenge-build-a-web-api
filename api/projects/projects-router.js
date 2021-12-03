@@ -28,19 +28,14 @@ router.get('/:id', validateId, (req, res, next) =>{
 })
 
 router.post('/', validateProject,  async(req, res, next) =>{
-     try {
-         const projectInfo = { 
-        ...req.body, 
-        name: req.name,  
-        description: req.description, 
-        completed: req.completed
-    };
-        const newProject = await Project.insert(projectInfo);
-        res.status(201).json(newProject);
-      } catch (error) {
-        next(error);
-      }
-    });
+    Project.insert(req.body)
+    .then(project => {
+        res.status(201).json(project)
+    })
+    .catch(error=>{
+        next(error)
+    })
+})
 
 router.use(errorHandling);
 
